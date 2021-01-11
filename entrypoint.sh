@@ -3,7 +3,6 @@
 IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(bug|feature|hotfix|epic|release|revert)/PZ-\d{4}" | wc -l)
 VALID_COMMIT_MESSAGE_PREFIX=$(echo ${BRANCH_NAME} | grep -oP "PZ-\d{4}"):
 
-echo $PULL_REQUEST_TITLE
 
 if [[ $IS_BRANCH_NAME_VALID != "1" ]]
 then
