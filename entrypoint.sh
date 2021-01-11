@@ -17,7 +17,7 @@ fi
 GIT_MESSAGES=$(git log remotes/origin/master.. --no-merges --first-parent --pretty=format:%H%s | grep -oP "^.{40}.{8}")
 for message in $GIT_MESSAGES
 do
-  COMMIT_REVISION_NUMBER=$(echo $message | cut -c 1-40)
+  COMMIT_REVISION_NUMBER=$(echo $message | cut -c 1-8)
   COMMIT_MESSAGE_PREFIX=$(echo $message | cut -c 41-48)
 
 
