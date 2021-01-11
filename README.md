@@ -1,0 +1,1 @@
+# action-commit-message-checker
