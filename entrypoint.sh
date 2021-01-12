@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(bug|feature|hotfix|epic|release|revert)/PZ-\d{4}" | wc -l)
-VALID_COMMIT_MESSAGE_PREFIX=$(echo ${BRANCH_NAME} | grep -oP "PZ-\d{4}"):
+VALID_COMMIT_MESSAGE_PREFIX=$(echo ${BRANCH_NAME} | grep -oP "PZ-\d{4}")
 
 
 if [[ $IS_BRANCH_NAME_VALID != "1" ]]
@@ -18,7 +18,7 @@ GIT_MESSAGES=$(git log remotes/origin/master.. --no-merges --first-parent --pret
 for message in $GIT_MESSAGES
 do
   COMMIT_REVISION_NUMBER=$(echo $message | cut -c 1-8)
-  COMMIT_MESSAGE_PREFIX=$(echo $message | cut -c 41-48)
+  COMMIT_MESSAGE_PREFIX=$(echo $message | cut -c 41-47)
 
 
   if [[ $VALID_COMMIT_MESSAGE_PREFIX != $COMMIT_MESSAGE_PREFIX ]]
