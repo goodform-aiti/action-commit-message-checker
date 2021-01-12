@@ -1,8 +1,14 @@
 #!/bin/bash
 
-IS_RELEASE_BRANCH==$( echo ${BRANCH_NAME} | grep -P "^(release|revert)/" | wc -l)
+echo "Branch name: ${BRANCH_NAME}"
+echo "Pull request title: ${PULL_REQUEST_TITLE}"
+echo "**********************************************"
 
-if [[ $IS_RELEASE_BRANCH == "1" ]]
+IS_RELEASE_BRANCH=$( echo ${BRANCH_NAME} | grep -P "^(release|revert)/" | wc -l)
+
+
+
+if [[ $IS_RELEASE_BRANCH != "1" ]]
 then
   IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(bug|feature|hotfix|epic)/PZ-\d{4}" | wc -l)
 else
@@ -18,7 +24,6 @@ VALID_COMMIT_MESSAGE_PREFIX=$(echo ${BRANCH_NAME} | grep -oP "PZ-\d{4}")
 if [[ $IS_BRANCH_NAME_VALID != "1" ]]
 then
   echo "The branch name( $BRANCH_NAME ) is not valid, for more information visit: https://github.com/ateli-development/shipgratis/wiki/Coding-standards"
-  echo "Once you changed the Pull-request title, you should create a new commit and push it."
   exit 101
 fi
 
