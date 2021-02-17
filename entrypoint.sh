@@ -4,7 +4,7 @@ echo "Branch name: ${BRANCH_NAME}"
 echo "Pull request title: ${PULL_REQUEST_TITLE}"
 echo "**********************************************"
 
-IS_RELEASE_BRANCH=$( echo ${BRANCH_NAME} | grep -P "^(release|revert)/" | wc -l)
+IS_RELEASE_BRANCH=$( echo ${BRANCH_NAME} | grep -P "^(release|revert).*/" | wc -l)
 
 
 
