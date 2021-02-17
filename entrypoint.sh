@@ -7,15 +7,13 @@ echo "**********************************************"
 IS_RELEASE_BRANCH=$( echo ${BRANCH_NAME} | grep -P "^(release|revert).*/" | wc -l)
 
 
-echo "is release branch:"
-echo $IS_RELEASE_BRANCH
 
 
 if [[ $IS_RELEASE_BRANCH != "1" ]]
 then
   IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(bug|feature|hotfix|epic)/PZ-\d{4}" | wc -l)
 else
-  IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(release|revert)/\d+" | wc -l)
+  IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(release|revert).+" | wc -l)
 fi
 
 
