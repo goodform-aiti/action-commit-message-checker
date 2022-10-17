@@ -5,31 +5,7 @@ echo "Pull request title: ${PULL_REQUEST_TITLE}"
 echo "**********************************************"
 
 JIRA_PREFIX="GF"
-IS_RELEASE_BRANCH=$( echo ${BRANCH_NAME} | grep -P "^(release|revert).*/" | wc -l)
-
-
-
-
-if [[ $IS_RELEASE_BRANCH != "1" ]]
-then
-  IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(bug|feature|hotfix)/$JIRA_PREFIX-\d+" | wc -l)
-else
-  IS_BRANCH_NAME_VALID=$( echo ${BRANCH_NAME} | grep -P "^(release|revert).+" | wc -l)
-fi
-
-
-
-
 VALID_COMMIT_MESSAGE_PREFIX=$(echo ${BRANCH_NAME} | grep -oP "$JIRA_PREFIX-\d+")
-
-
-if [[ $IS_BRANCH_NAME_VALID != "1" ]]
-then
-  echo "The branch name( $BRANCH_NAME ) is not valid, for more information visit: https://github.com/ateli-development/shipgratis/wiki/Coding-standards"
-  exit 101
-fi
-
-
 
 
 GIT_MESSAGES=$(git log remotes/origin/master.. --no-merges --first-parent --pretty=format:%H%s | grep -oP "^.{40}.{8}")
