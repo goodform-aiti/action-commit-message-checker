@@ -17,7 +17,7 @@ do
 
   if [[ $VALID_COMMIT_MESSAGE_PREFIX != $COMMIT_MESSAGE_PREFIX ]]
   then
-    printf "commit message with revision $COMMIT_REVISION_NUMBER should be started with: $VALID_COMMIT_MESSAGE_PREFIX , but it is started with $COMMIT_MESSAGE_PREFIX\n"
+    printf "Commit message with revision '$COMMIT_REVISION_NUMBER' should be started with: '$VALID_COMMIT_MESSAGE_PREFIX', but it is started with '$COMMIT_MESSAGE_PREFIX'\n"
     printf "How you can edit your commit messages?: https://github.com/ateli-development/shipgratis/wiki/How-to-Change-a-Git-Commit-Message"
     exit 101
   fi
